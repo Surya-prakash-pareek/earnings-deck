@@ -63,7 +63,7 @@ Welcome to the **Product Documentation Presentation**.
 
 ---
 
-<!-- _backgroundImage: url('https://picsum.photos/1200/700') -->
+<!-- _backgroundImage: "https://picsum.photos/1200/700" -->
 
 # Background Image Slide
 
