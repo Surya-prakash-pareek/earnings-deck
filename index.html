@@ -1,0 +1,192 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Q{N} Quarterly Earnings – Interactive Deck</title>
+  <meta name="description" content="Interactive quarterly earnings presentation with RevealJS, fragments, code, math, markdown, and speaker notes." />
+
+  <!-- Reveal.js core CSS -->
+  <link rel="stylesheet" href="https://unpkg.com/reveal.js@5/dist/reveal.css" />
+  <link rel="stylesheet" href="https://unpkg.com/reveal.js@5/dist/theme/black.css" id="theme" />
+
+  <!-- Code syntax highlighting theme -->
+  <link rel="stylesheet" href="https://unpkg.com/reveal.js@5/plugin/highlight/monokai.css" />
+
+  <style>
+    /* Minor polish */
+    .title-email { font-size: 0.9rem; opacity: 0.9; }
+    .kpi { font-size: 1.2rem; }
+    .reveal .slides section .grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; align-items: start; }
+    .badge { display: inline-block; padding: .25rem .6rem; border-radius: 999px; background: #2e7; color: #111; font-weight: 700; font-size: .7em; }
+    .caption { font-size: .6em; opacity:.8 }
+  </style>
+</head>
+<body>
+  <div class="reveal">
+    <div class="slides">
+
+      <!-- TITLE -->
+      <section>
+        <h2>Quarterly Earnings Report</h2>
+        <p class="fragment">Modern, interactive stakeholder briefing</p>
+        <p class="title-email">Prepared by: 22f2001613@ds.study.iitm.ac.in</p>
+        <p><span class="badge">RevealJS</span> <span class="badge">Markdown</span> <span class="badge">Fragments</span> <span class="badge">Code</span> <span class="badge">Math</span> <span class="badge">Speaker Notes</span></p>
+        <aside class="notes">
+          Welcome! This deck demonstrates a modern, interactive format for quarterly reviews. Use → and ↓ to navigate. Hit <b>s</b> to open speaker notes.
+        </aside>
+      </section>
+
+      <!-- AGENDA with fragments (animated reveal) -->
+      <section>
+        <h3>Agenda</h3>
+        <ul>
+          <li class="fragment">Headline KPIs</li>
+          <li class="fragment">Revenue & Cost Drivers</li>
+          <li class="fragment">Cash Flow & Liquidity</li>
+          <li class="fragment">Tech Highlights (Code Demo)</li>
+          <li class="fragment">Outlook & Guidance</li>
+        </ul>
+        <aside class="notes">
+          Briefly preview the sections. Encourage questions to be parked for the end to keep flow.
+        </aside>
+      </section>
+
+      <!-- MARKDOWN SLIDE -->
+      <section data-markdown>
+        <textarea data-template>
+### Headline KPIs *(Markdown slide)*
+
+- **Revenue:** $1.24B _(▲ 7% YoY)_
+- **Operating Margin:** **18.4%** _(▲ 120 bps YoY)_
+- **EPS (Diluted):** **$1.12** _(▲ 9% YoY)_
+- **Free Cash Flow:** **$226M** _(▲ 5% YoY)_
+
+> Takeaway: disciplined cost control + steady top-line growth.
+
+*Prepared by: 22f2001613@ds.study.iitm.ac.in*
+
+Notes:
+- This slide uses RevealJS **Markdown** plugin.
+- Bullet items can be progressively revealed with **fragments** on other slides.
+        </textarea>
+      </section>
+
+      <!-- KPI split + fragments -->
+      <section>
+        <h3>Revenue & Cost Drivers</h3>
+        <div class="grid-2">
+          <div>
+            <h4>Revenue Mix</h4>
+            <ul>
+              <li class="fragment">Institutional Banking – 46%</li>
+              <li class="fragment">Retail Banking – 34%</li>
+              <li class="fragment">Wealth & AM – 20%</li>
+            </ul>
+          </div>
+          <div>
+            <h4>Cost Focus</h4>
+            <ul>
+              <li class="fragment">Cloud migration savings realized</li>
+              <li class="fragment">Automation reduced ops tickets by ~22%</li>
+              <li class="fragment">Vendor consolidation on-track</li>
+            </ul>
+          </div>
+        </div>
+        <aside class="notes">
+          Call out sustainability of mix. Emphasize recurring automation gains. Replace placeholder percentages with actuals before publishing.
+        </aside>
+      </section>
+
+      <!-- MATH / FINANCIAL FORMULAS -->
+      <section>
+        <h3>Financial Math</h3>
+        <p>Net Present Value (NPV):</p>
+        <p>\[ \mathrm{NPV} = \sum_{t=1}^{T} \frac{CF_t}{(1+r)^t} - C_0 \]</p>
+        <p class="caption">Where \(CF_t\) are cash flows, \(r\) is discount rate, and \(C_0\) is initial cost.</p>
+        <p>Cost of Equity (CAPM):</p>
+        <p>\[ k_e = r_f + \beta (r_m - r_f) \]</p>
+        <aside class="notes">
+          Mention sensitivity analysis on r and T. Show how guidance ranges shift NPV and k_e.
+        </aside>
+      </section>
+
+      <!-- CODE SAMPLE with syntax highlighting -->
+      <section>
+        <h3>Tech Highlight: Programmatic KPI Check</h3>
+        <pre><code class="language-python">from dataclasses import dataclass
+
+@dataclass
+class KPIs:
+    revenue: float  # in millions
+    op_margin: float  # 0..1
+    eps: float
+
+k = KPIs(revenue=1240.0, op_margin=0.184, eps=1.12)
+
+def beats_consensus(actual, consensus):
+    return all(a >= c for a, c in zip(actual, consensus))
+
+print(beats_consensus(
+    actual=(k.revenue, k.op_margin, k.eps),
+    consensus=(1215.0, 0.175, 1.08)
+))  # True
+</code></pre>
+        <aside class="notes">
+          Keep examples readable. This slide uses the **highlight.js** plugin via Reveal for syntax highlighting.
+        </aside>
+      </section>
+
+      <!-- INTERACTIVE Q&A with fragments -->
+      <section>
+        <h3>Outlook & Guidance</h3>
+        <ul>
+          <li class="fragment">FY topline growth: 6–8%</li>
+          <li class="fragment">OpEx: +3–4% (ex-LLPs)</li>
+          <li class="fragment">ROE target: &gt; 15%</li>
+          <li class="fragment">Capital return: progressive dividend policy</li>
+        </ul>
+        <aside class="notes">
+          Anchor expectations; stress macro assumptions and risk factors before Q&A.
+        </aside>
+      </section>
+
+      <!-- CONTACT / CLOSING -->
+      <section>
+        <h3>Thank You</h3>
+        <p>Questions? Reach me at <strong>22f2001613@ds.study.iitm.ac.in</strong></p>
+        <p class="caption">Press <kbd>?</kbd> during the talk for a quick keyboard help overlay.</p>
+        <aside class="notes">
+          Invite follow-ups and provide repository link after publishing on GitHub Pages.
+        </aside>
+      </section>
+
+    </div>
+  </div>
+
+  <!-- Reveal.js core and plugins -->
+  <script src="https://unpkg.com/reveal.js@5/dist/reveal.js"></script>
+  <script src="https://unpkg.com/reveal.js@5/plugin/markdown/markdown.js"></script>
+  <script src="https://unpkg.com/reveal.js@5/plugin/highlight/highlight.js"></script>
+  <script src="https://unpkg.com/reveal.js@5/plugin/math/math.js"></script>
+  <script src="https://unpkg.com/reveal.js@5/plugin/notes/notes.js"></script>
+
+  <script>
+    // Initialize Reveal
+    const deck = new Reveal({
+      hash: true,
+      transition: 'slide',
+      slideNumber: true,
+      plugins: [ RevealMarkdown, RevealHighlight, RevealMath.KaTeX, RevealNotes ],
+      // Optional: help auto-animate elements across slides if you add data-id's
+      autoAnimate: true
+    });
+    deck.initialize({
+      math: {
+        // KaTeX is loaded automatically by the plugin
+        // You can customize delivery via katex: { ... } if needed
+      }
+    });
+  </script>
+</body>
+</html>
